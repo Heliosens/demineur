@@ -26,12 +26,18 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 12rem;
+    background-color: darkslategrey;
 }
 
 #gameBoard div {
     height: 2rem;
     border: 1px solid #242222;
-    background-color: darkslategrey;
     box-shadow: inset 0 0 2px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.bomb {
+    border-radius: 50%;
+}
