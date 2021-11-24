@@ -54,22 +54,25 @@ function placeBomb (element){
 }
 
 // eval cases value in function of bomb
-for (let l = 0 ; l < col ; l +=5){  // 0 to col < 5
+for (let c = 0 ; c < col ; c +=5){  // 0 to col < 5
+
     for(let i = 0 ; i < cases.length ; i ++){  // i
-        if (cases[l + i].children.length === 1 && isNaN(parseInt(cases[l+i].innerHTML))){
-            if(i > 0){
-                if(isNaN(parseInt(cases[l+i-1].innerHTML))){
-                    cases[l+i-1].innerHTML = "1";
-                }
-                else {
-                    cases[l+i-1].innerHTML = (parseInt(cases[l+i-1].innerHTML) + 1).toString();
-                    console.log("l = " + l + " i = " + i);
-                }
+        if (cases[c + i].children.length === 1){
+            cases[c+i-1].innerHTML = "1";
+            // if(c > 0){
+            //     if(isNaN(parseInt(cases[c+i-1].innerHTML))){
+            //         cases[c+i-1].innerHTML = "1";
+            //         console.log("c = " + c + " i = " + i);
+            //     }
+            //     else {
+                    // cases[c+i-1].innerHTML = (parseInt(cases[c+i-1].innerHTML) + 1).toString();
+                    // console.log("C = " + c + " I = " + i);
 
-            }
-
-            console.log('l = ' + l);
-            console.log('case l+i = ' + (l + i));
+        //         }
+        //
+        //     }
+        //
+        //     // console.log('case c+i = ' + (c + i));
         }
     }
 }
