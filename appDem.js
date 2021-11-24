@@ -18,7 +18,6 @@ for(let i = 0 ; i < (col * line) ; i++){
     let frame = document.createElement("div");
     gameBoard.appendChild(frame);
 }
-console.log(cases.length);
 
 // gameBoard width = col * 2 rem
 gameBoard.style.width = col * 2 + "rem";
@@ -64,8 +63,9 @@ for (let l = 0 ; l < col ; l +=5){  // 0 to col < 5
                 }
                 else {
                     cases[l+i-1].innerHTML = (parseInt(cases[l+i-1].innerHTML) + 1).toString();
+                    console.log("l = " + l + " i = " + i);
                 }
-                console.log("x-1 = " + (l + i - 1));
+
             }
 
             console.log('l = ' + l);
