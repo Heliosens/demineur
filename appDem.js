@@ -2,22 +2,23 @@
 let gameBoard = document.getElementById("gameBoard");
 let cases = gameBoard.getElementsByTagName("div");
 
+
 // get text
 let nbrT = document.getElementById("nbrT");
 
 
 // choice column & line nbr & number of bomb
-let col = 25;
-let line = 20;
-let nbrBomb = 50;
+let col = 5;
+let line = 4;
+let nbrBomb = 5;
 nbrT.innerHTML = nbrBomb.toString();
-
 
 // create col * lin div
 for(let i = 0 ; i < (col * line) ; i++){
     let frame = document.createElement("div");
     gameBoard.appendChild(frame);
 }
+console.log(cases.length);
 
 // gameBoard width = col * 2 rem
 gameBoard.style.width = col * 2 + "rem";
@@ -29,7 +30,7 @@ for( let i = 0 ; i < cases.length ; i++){
 
 for(let i = 0 ; i < nbrBomb ; i++){
 
-    let bomb = document.createElement('div');
+    let bomb = document.createElement('span');
     bomb.className = "bomb";
     bomb.style.backgroundColor = 'black';
     bomb.style.border = '1px red solid';
@@ -39,9 +40,12 @@ for(let i = 0 ; i < nbrBomb ; i++){
 }
 
 // place X bomb
+/**
+ * @param element
+ */
 function placeBomb (element){
-    let x = Math.round(Math.random() * cases.length);
-    console.log(x);
+    let x = Math.floor(Math.random() * cases.length);
+    // console.log(x);
     if(cases[x].children.length === 0){
         cases[x].appendChild(element);
     }
@@ -51,3 +55,15 @@ function placeBomb (element){
 }
 
 // eval cases value in function of bomb
+for (let i = 0 ; i < cases.length ; i++){
+    console.log("case = " + i);
+    for( let j = 0 ; j < col ; j++){
+        console.log("ligne = " + j);
+        if(cases[i].children.length === 1) {
+            if ( i > 0 && i + (j-1) * col < col * j){
+                cases[i - 1].innerHTML = "1";
+            }
+        }
+    }
+}
+
