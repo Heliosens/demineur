@@ -28,11 +28,10 @@ for( let i = 0 ; i < cases.length ; i++){
 }
 
 for(let i = 0 ; i < nbrBomb ; i++){
-
     let bomb = document.createElement('span');
     bomb.className = "bomb";
     bomb.style.backgroundColor = 'black';
-    bomb.style.border = '1px red solid';
+    bomb.style.border = '1px orange solid';
     bomb.style.width = '1.5rem';
     bomb.style.height = '1.5rem';
     placeBomb(bomb);
@@ -47,33 +46,73 @@ function placeBomb (element){
     // console.log(x);
     if(cases[x].children.length === 0){
         cases[x].appendChild(element);
+        cases[x].className = "death";
     }
     else {
         placeBomb(element);
     }
 }
 
+
 // eval cases value in function of bomb
-for (let c = 0 ; c < col ; c +=5){  // 0 to col < 5
+// find cases with class name death
+// for each write +1 before
+let l;
+let c;
+for(let i = 0 ; i < cases.length ; i++){    // for each cases
 
-    for(let i = 0 ; i < cases.length ; i ++){  // i
-        if (cases[c + i].children.length === 1){
-            cases[c+i-1].innerHTML = "1";
-            // if(c > 0){
-            //     if(isNaN(parseInt(cases[c+i-1].innerHTML))){
-            //         cases[c+i-1].innerHTML = "1";
-            //         console.log("c = " + c + " i = " + i);
-            //     }
-            //     else {
-                    // cases[c+i-1].innerHTML = (parseInt(cases[c+i-1].innerHTML) + 1).toString();
-                    // console.log("C = " + c + " I = " + i);
-
-        //         }
-        //
-        //     }
-        //
-        //     // console.log('case c+i = ' + (c + i));
+    if(cases[i].className === "death"){     // if contain bomb
+        // return coordinates c = n° column / l = n° line
+        position(i);
+        // c > 0 => not the first column
+        if(c > 0){
+            if(cases[i-1].className !== "death"){   // add count column before
+                if(cases[i-1].innerHTML.length === 0){
+                    cases[i-1].innerHTML = "1";
+                }
+                else {
+                    cases[i-1].innerHTML = (parseInt(cases[i-1].innerHTML) + 1).toString();
+                }
+            }
+        }
+        // not the last col
+        if (c < col -1){
+            if(cases[i+1].className !== "death"){   // add count column after
+                if(cases[i+1].innerHTML.length === 0){
+                    cases[i+1].innerHTML = "1";
+                }
+                else {
+                    cases[i+1].innerHTML = (parseInt(cases[i+1].innerHTML) + 1).toString();
+                }
+            }
+        }
+        // not the first line
+        if (l > 0){
+            if(cases[i-col].className !== "death"){   // add count line before
+                if(cases[i-col].innerHTML.length === 0){
+                    cases[i-col].innerHTML = "1";
+                }
+                else {
+                    cases[i-col].innerHTML = (parseInt(cases[i-col].innerHTML) + 1).toString();
+                }
+            }
+        }
+        // not the last line
+        if(l < line-1){
+            if(cases[i+col].className !== "death"){    // add count line after
+                if(cases[i+col].innerHTML.length === 0){
+                    cases[i+col].innerHTML = "1";
+                }
+                else {
+                    cases[i+col].innerHTML = (parseInt(cases[i+col].innerHTML) + 1).toString();
+                }
+            }
         }
     }
+}
+
+function position (numCase){
+    l = Math.floor(numCase / col);
+    c = numCase - (l * col);
 }
 
