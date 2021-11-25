@@ -64,7 +64,8 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
     if(cases[i].className === "death"){     // if contain bomb
         // return coordinates c = n° column / l = n° line
         position(i);
-        // c > 0 => not the first column
+    // for the bomb line
+        // not the first column
         if(c > 0){
             if(cases[i-1].className !== "death"){   // add count column before
                 if(cases[i-1].innerHTML.length === 0){
@@ -86,6 +87,7 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
                 }
             }
         }
+    // for line before
         // not the first line
         if (l > 0){
             if(cases[i-col].className !== "death"){   // add count line before
@@ -109,12 +111,12 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
             }
             // not last column
             if (c < col -1){
-                if(cases[i+1+col].className !== "death"){   // add count line before column after
-                    if(cases[i+1+col].innerHTML.length === 0){
-                        cases[i+1+col].innerHTML = "1";
+                if(cases[i - col + 1].className !== "death"){   // add count line before column after
+                    if(cases[i-col+1].innerHTML.length === 0){
+                        cases[i-col+1].innerHTML = "1";
                     }
                     else {
-                        cases[i+1+col].innerHTML = (parseInt(cases[i+1+col].innerHTML) + 1).toString();
+                        cases[i+1-col].innerHTML = (parseInt(cases[i+1-col].innerHTML) + 1).toString();
                     }
                 }
             }
@@ -152,7 +154,6 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
             }
         }
     }
-    // todo add 1 in diagonal cases
 }
 
 function position (numCase){
