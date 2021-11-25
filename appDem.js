@@ -96,6 +96,28 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
                     cases[i-col].innerHTML = (parseInt(cases[i-col].innerHTML) + 1).toString();
                 }
             }
+            // not first column
+            if(c > 0){
+                if(cases[i-1-col].className !== "death"){   // add count line before column before
+                    if(cases[i-1-col].innerHTML.length === 0){
+                        cases[i-1-col].innerHTML = "1";
+                    }
+                    else {
+                        cases[i-1-col].innerHTML = (parseInt(cases[i-1-col].innerHTML) + 1).toString();
+                    }
+                }
+            }
+            // not last column
+            if (c < col -1){
+                if(cases[i+1+col].className !== "death"){   // add count line before column after
+                    if(cases[i+1+col].innerHTML.length === 0){
+                        cases[i+1+col].innerHTML = "1";
+                    }
+                    else {
+                        cases[i+1+col].innerHTML = (parseInt(cases[i+1+col].innerHTML) + 1).toString();
+                    }
+                }
+            }
         }
         // not the last line
         if(l < line-1){
@@ -107,8 +129,30 @@ for(let i = 0 ; i < cases.length ; i++){    // for each cases
                     cases[i+col].innerHTML = (parseInt(cases[i+col].innerHTML) + 1).toString();
                 }
             }
+            // not the first column
+            if(c > 0){
+                if(cases[i+col-1].className !== "death"){
+                    if(cases[i+col-1].innerHTML.length === 0){
+                        cases[i+col-1].innerHTML = "1";
+                    }
+                    else {
+                        cases[i+col-1].innerHTML = (parseInt(cases[i+col-1].innerHTML) + 1).toString();
+                    }
+                }
+            }
+            if(c < col-1){
+                if(cases[i+col+1].className !== "death"){
+                    if(cases[i+col+1].innerHTML.length === 0){
+                        cases[i+col+1].innerHTML = "1";
+                    }
+                    else {
+                        cases[i+col+1].innerHTML = (parseInt(cases[i+col+1].innerHTML) + 1).toString();
+                    }
+                }
+            }
         }
     }
+    // todo add 1 in diagonal cases
 }
 
 function position (numCase){
