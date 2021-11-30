@@ -5,13 +5,14 @@
 }
 
 html {
-    /*font-size: 62.5%;*/
+    font-size: 62.5%;
     font-family: sans-serif;
 }
 
 body {
     width: 100%;
     text-align: center;
+    font-size: 1.5vw;
 }
 
 main {
@@ -23,14 +24,14 @@ main {
 }
 
 #gameBoard {
+    font-size: 1vw;
     display: flex;
     flex-wrap: wrap;
-    width: 12rem;
     background-color: darkslategrey;
 }
 
 #gameBoard div {
-    height: 2rem;
+    height: 4vh;
     border: 1px solid #242222;
     box-shadow: inset 0 0 2px white;
     display: flex;

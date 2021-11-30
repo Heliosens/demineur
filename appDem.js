@@ -20,7 +20,7 @@ for(let i = 0 ; i < (col * line) ; i++){
 }
 
 // gameBoard width = col * 2 rem
-gameBoard.style.width = col * 2 + "rem";
+gameBoard.style.width = col * 2 + "vw";
 
 // cases with function of nbr of column
 for( let i = 0 ; i < cases.length ; i++){
@@ -32,8 +32,8 @@ for(let i = 0 ; i < nbrBomb ; i++){
     bomb.className = "bomb";
     bomb.style.backgroundColor = 'black';
     bomb.style.border = '1px orange solid';
-    bomb.style.width = '1.5rem';
-    bomb.style.height = '1.5rem';
+    bomb.style.width = '1.5vw';
+    bomb.style.height = '3vh';
     placeBomb(bomb);
 }
 
